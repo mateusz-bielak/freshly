@@ -1,26 +1,42 @@
 import React, { useState, useEffect } from 'react';
 
 function App() {
-    const [data, setData] = useState({ hits: [] });
+    const [stations, setStations] = useState([]);
+    const [stationIndex, setStationIndex] = useState({});
 
-    const fetchData = async () => {
-        const result = await fetch(`http://localhost:4000/api/station/findAll`).then(res => res.json());
+    const fetchStations = async () => {
+        const stations = await fetch('http://localhost:4000/api/station/findAll').then(res =>
+            res.json(),
+        );
+        setStations(stations);
+    };
 
-        setData({ hits: result });
+    const fetchStationIndex = async event => {
+        const stationIndex = await fetch(
+            `http://localhost:4000/api/aqindex/getIndex/${event.target.value}`,
+        ).then(res => res.json());
+
+        setStationIndex(stationIndex);
     };
 
     useEffect(() => {
-        fetchData();
+        fetchStations();
     }, []);
 
     return (
-        <ul className="App">
-            {/* {data.hits.map(item => (
-                <li key={item.id}>
-                    <p>{item.stationName}</p>
-                </li>
-            ))} */}
-        </ul>
+        <>
+            <select id="stations" onChange={fetchStationIndex} defaultValue="pickStation">
+                <option disabled value="pickStation">
+                    Pick station
+                </option>
+                {stations.map(({ id, stationName }) => (
+                    <option key={id} value={id}>
+                        {stationName}
+                    </option>
+                ))}
+            </select>
+            {stationIndex.stIndexLevel && stationIndex.stIndexLevel.indexLevelName}
+        </>
     );
 }
 
