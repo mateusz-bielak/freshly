@@ -6,7 +6,12 @@ const port = process.env.PORT || 4000;
 
 const externalApi = 'http://api.gios.gov.pl/pjp-api/rest';
 
-app.use('/api', (req, res) => req.pipe(request(`${externalApi}${req.url}`)).pipe(res));
+app.use('/api', (req, res) =>
+    req
+        .pipe(request(`${externalApi}${req.url}`))
+        .on('response', res => (res.headers['access-control-allow-origin'] = '*'))
+        .pipe(res),
+);
 
 app.listen(port, () => {
     console.log('Server is up!');
