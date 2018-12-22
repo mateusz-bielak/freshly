@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { SelectStation } from './SelectStation';
+import { StatsCard } from './StatsCard';
 
 function App() {
     const [stations, setStations] = useState([]);
-    const [stationIndex, setStationIndex] = useState({});
+    const [stationIndex, setStationIndex] = useState();
 
     const fetchStations = async () => {
         const stations = await fetch('http://localhost:4000/api/station/findAll').then(res =>
@@ -12,10 +12,10 @@ function App() {
         setStations(stations);
     };
 
-    const fetchStationIndex = async event => {
-        const stationIndex = await fetch(
-            `http://localhost:4000/api/aqindex/getIndex/${event.target.value}`,
-        ).then(res => res.json());
+    const fetchStationIndex = async value => {
+        const stationIndex = await fetch(`http://localhost:4000/api/aqindex/getIndex/${value}`).then(
+            res => res.json(),
+        );
 
         setStationIndex(stationIndex);
     };
@@ -25,20 +25,11 @@ function App() {
     }, []);
 
     return (
-        <>
-            {/* <select id="stations" onChange={fetchStationIndex} defaultValue="pickStation">
-                <option disabled value="pickStation">
-                    Pick station
-                </option>
-                {stations.map(({ id, stationName }) => (
-                    <option key={id} value={id}>
-                        {stationName}
-                    </option>
-                ))}
-            </select> */}
-            <SelectStation stations={stations} />
-            {/* {stationIndex.stIndexLevel && stationIndex.stIndexLevel.indexLevelName} */}
-        </>
+        <StatsCard
+            fetchStationIndex={fetchStationIndex}
+            stations={stations}
+            stationIndex={stationIndex}
+        />
     );
 }
 

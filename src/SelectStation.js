@@ -5,32 +5,18 @@ import './App.css';
 
 const Option = Select.Option;
 
-const handleChange = value => {
-    console.log(`selected ${value}`);
-};
-
-const handleBlur = () => {
-    console.log('blur');
-};
-
-const handleFocus = () => {
-    console.log('focus');
-};
-
 const filterOption = (input, option) =>
     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 
-export const SelectStation = ({ stations }) => (
+export const SelectStation = ({ fetchStationIndex, stations }) => (
     <Select
         allowClear
         filterOption={filterOption}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        onFocus={handleFocus}
+        onSelect={fetchStationIndex}
         optionFilterProp="children"
-        placeholder="Select a person"
+        placeholder="Select a station"
         showSearch
-        style={{ width: 200 }}
+        style={{ width: '100%' }}
     >
         {stations.map(({ id, stationName }) => (
             <Option key={id} value={id}>
