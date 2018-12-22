@@ -1,1 +1,35 @@
 @import '~antd/dist/antd.css';
+
+.ant-card {
+    background-color: #ecf0f1;
+}
+
+.ant-card-bordered {
+    border: none;
+}
+
+.ant-card-head {
+    padding: 0;
+    background-color: #ecf0f1;
+    border: none;
+}
+
+.ant-card-body {
+    background-color: #3498db;
+    border: 1px solid #e8e8e8;
+    border-radius: 9px;
+    text-align: center;
+}
+
+.ant-select-selection {
+    border: none;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 0;
+    background-color: #ecf0f1;
+}
+
+.ant-select-selection:focus {
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: none;
+    outline: none;
+}

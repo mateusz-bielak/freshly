@@ -1,7 +1,5 @@
 import React from 'react';
-import { Select } from 'antd';
-
-import './App.css';
+import { Icon, Select } from 'antd';
 
 const Option = Select.Option;
 
@@ -10,13 +8,14 @@ const filterOption = (input, option) =>
 
 export const SelectStation = ({ fetchStationIndex, stations }) => (
     <Select
+        clearIcon={<Icon style={{ backgroundColor: '#ecf0f1' }} type="delete" />}
         allowClear
         filterOption={filterOption}
         onSelect={fetchStationIndex}
         optionFilterProp="children"
         placeholder="Select a station"
         showSearch
-        style={{ width: '100%' }}
+        style={{ border: 'none', width: '100%' }}
     >
         {stations.map(({ id, stationName }) => (
             <Option key={id} value={id}>

@@ -11,11 +11,11 @@ export const StatsCard = ({ fetchStationIndex, stations, stationIndex }) => {
             title={<SelectStation stations={stations} fetchStationIndex={fetchStationIndex} />}
             style={{ width: 300 }}
         >
-            {stationIndex ? (
-                <p>Stan powietrza: {stationIndex.stIndexLevel.indexLevelName} </p>
-            ) : (
-                <p>Jakie mamy dzisiaj powietrze?</p>
-            )}
+            <span style={{ fontWeight: '600', color: '#fff' }}>
+                {stationIndex
+                    ? `Stan powietrza: ${stationIndex.stIndexLevel.indexLevelName}`
+                    : 'Jakie mamy dzisiaj powietrze?'}
+            </span>
         </Card>
     );
 };
