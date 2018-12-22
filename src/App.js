@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SelectStation } from './SelectStation';
 
 function App() {
     const [stations, setStations] = useState([]);
@@ -25,7 +26,7 @@ function App() {
 
     return (
         <>
-            <select id="stations" onChange={fetchStationIndex} defaultValue="pickStation">
+            {/* <select id="stations" onChange={fetchStationIndex} defaultValue="pickStation">
                 <option disabled value="pickStation">
                     Pick station
                 </option>
@@ -34,8 +35,9 @@ function App() {
                         {stationName}
                     </option>
                 ))}
-            </select>
-            {stationIndex.stIndexLevel && stationIndex.stIndexLevel.indexLevelName}
+            </select> */}
+            <SelectStation stations={stations} />
+            {/* {stationIndex.stIndexLevel && stationIndex.stIndexLevel.indexLevelName} */}
         </>
     );
 }
