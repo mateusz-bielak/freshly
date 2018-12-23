@@ -8,16 +8,12 @@ function App() {
     const [stationIndex, setStationIndex] = useState();
 
     const fetchStations = async () => {
-        const stations = await fetch('http://localhost:4000/api/station/findAll').then(res =>
-            res.json(),
-        );
+        const stations = await fetch('/api/station/findAll').then(res => res.json());
         setStations(stations);
     };
 
     const fetchStationIndex = async value => {
-        const stationIndex = await fetch(`http://localhost:4000/api/aqindex/getIndex/${value}`).then(
-            res => res.json(),
-        );
+        const stationIndex = await fetch(`/api/aqindex/getIndex/${value}`).then(res => res.json());
 
         setStationIndex(stationIndex);
     };

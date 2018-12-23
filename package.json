@@ -1,0 +1,12 @@
+{
+    "name": "freshly-proxy",
+    "version": "1.0.0",
+    "main": "server.js",
+    "repository": "git@github.com:mateusz-bielak/freshly.git",
+    "author": "Mateusz Bielak <mateusz.bielak@skygate.io>",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.16.4",
+        "request": "^2.88.0"
+    }
+}
