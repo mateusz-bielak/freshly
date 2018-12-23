@@ -5,6 +5,10 @@
     "repository": "git@github.com:mateusz-bielak/freshly.git",
     "author": "Mateusz Bielak <mateusz.bielak@skygate.io>",
     "license": "MIT",
+    "scripts": {
+        "start": "node server.js",
+        "heroku-postbuild": "cd client && yarn && yarn run build"
+    },
     "dependencies": {
         "express": "^4.16.4",
         "request": "^2.88.0"
