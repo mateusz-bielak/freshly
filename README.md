@@ -41,6 +41,7 @@ npm start
 Next, go to client directory and start React app:
 
 ```
+cd client
 npm start
 ```
 
