@@ -5,6 +5,7 @@ Simple application to get current air quality from stations allocated in Poland.
 - Used air data from http://powietrze.gios.gov.pl
 - Contains proxy server for data fetching
 - Built with Create React App 2.0
+- [See live](https://freshly-hooks.herokuapp.com/)
 
 ## Prerequisites
 
